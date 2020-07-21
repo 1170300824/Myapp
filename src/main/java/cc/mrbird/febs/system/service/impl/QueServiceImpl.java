@@ -28,7 +28,6 @@ import java.util.*;
 public class QueServiceImpl extends ServiceImpl<QueMapper, Que> implements IQueService {
 
 
-
     @Override
     public Que findByName(String quetitle) {
         return this.baseMapper.findByName(quetitle);
@@ -75,6 +74,11 @@ public class QueServiceImpl extends ServiceImpl<QueMapper, Que> implements IQueS
     @Transactional(rollbackFor = Exception.class)
     public void updateQue(Que que) {
         updateById(que);
+    }
+
+    @Override
+    public List<Que> findNQue(int number) {
+        return this.baseMapper.findNQue(number);
     }
 
     private boolean isCurrentUser(Long id) {
